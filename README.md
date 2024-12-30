@@ -42,12 +42,12 @@ git clone https://github.com/user/CryptoPredictor.git
 
 2. Create a virtual environment:
 ```bash
-python3 -m venv venvStreamlit
+python3 -m venv venvCrypto
 ```
 
 3. Activate the virtual environment:
 ```bash
-source venvStreamlit/bin/activate
+source venvCrypto/bin/activate
 ```
 
 4. Install requirements:
