@@ -136,6 +136,11 @@ if st.sidebar.button("Run Prediction"):
     
     # Display predicted prices
     st.subheader(f"Predicted Closing Prices")
-    st.write(format_table(future_predictions_df))
-
-
+    # Format the DataFrame for display
+    formatted_table = format_table(future_predictions_df)
+    
+    # Display the table with interactive features
+    st.dataframe(
+	formatted_table,
+	use_container_width=True,  # Adjust table to container width
+    )
