@@ -1,12 +1,13 @@
 import os
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from keras.models import Sequential
-from keras.layers import Dense, LSTM
+from keras.layers import Dense, LSTM, Input
 from sklearn.preprocessing import MinMaxScaler
 from helper import fetch_crypto_tickers, download_data, format_table
 
@@ -17,21 +18,27 @@ def restart_app():
     """Triggers a Streamlit rerun."""
     st.experimental_rerun()
 
+# Reusable restart button
+def show_restart_button():
+    if st.button("Restart App"):
+        restart_app()
+
 # Sidebar inputs
 try:
     crypto_data = fetch_crypto_tickers()
 except Exception as e:
     st.error(f"Error fetching cryptocurrency data: {e}")
-    if st.button("Restart App"):
-        restart_app()
+    show_restart_button()
     st.stop()
 
 selected_crypto = st.sidebar.selectbox("Select Cryptocurrency", [f"{d['ticker']} ({d['name']})" for d in crypto_data])
 selected_ticker = [d['ticker'] for d in crypto_data if selected_crypto.startswith(d['ticker'])][0]
 selected_name = selected_crypto.split('(')[1][:-1]
 
-epochs = st.sidebar.slider("Epochs", 1, 50, 10)
-days_to_predict = st.sidebar.slider("Prediction Range (Days)", 1, 90, 30)
+with st.sidebar:
+    st.header("Model Parameters")
+    epochs = st.slider("Epochs", 1, 50, 10)
+    days_to_predict = st.slider("Prediction Range (Days)", 1, 90, 30)
 
 if st.sidebar.button("Run Prediction"):
     try:
@@ -39,8 +46,7 @@ if st.sidebar.button("Run Prediction"):
         crypto_df, close_column = download_data(selected_ticker)
     except Exception as e:
         st.error(f"Error downloading data: {e}")
-        if st.button("Restart App"):
-            restart_app()
+        show_restart_button()
         st.stop()
 
     st.subheader(f"Historical Prices for {selected_ticker} ({selected_name})")
@@ -76,14 +82,20 @@ if st.sidebar.button("Run Prediction"):
 
     # Build and train model
     model = Sequential([
-        LSTM(50, return_sequences=True, input_shape=(X_train.shape[1], 1)),
+        Input(shape=(X_train.shape[1], 1)),
+        LSTM(50, return_sequences=True),
         LSTM(50, return_sequences=False),
         Dense(25),
         Dense(1)
     ])
     model.compile(optimizer='adam', loss='mean_squared_error')
     st.text("Training model...")
-    model.fit(X_train, y_train, batch_size=1, epochs=epochs)
+    try:
+        model.fit(X_train, y_train, batch_size=1, epochs=epochs)
+    except Exception as e:
+        st.error(f"An error occurred during training: {e}")
+        show_restart_button()
+        st.stop()
 
     # Predictions
     test_data = scaled_data[train_len - 60:]
@@ -91,16 +103,21 @@ if st.sidebar.button("Run Prediction"):
     for i in range(60, len(test_data)):
         X_test.append(test_data[i-60:i, 0])
 
-    X_test = np.array(X_test).reshape((len(X_test), 60, 1))
+    X_test = np.array(X_test).reshape(len(X_test), 60, 1)
     predictions = scaler.inverse_transform(model.predict(X_test))
 
     future_input = scaled_data[-60:]
     future_prices = []
-    for _ in range(days_to_predict):
-        pred_input = future_input.reshape((1, 60, 1))
-        pred_price = model.predict(pred_input)
-        future_prices.append(pred_price[0, 0])
-        future_input = np.append(future_input[1:], pred_price, axis=0)
+    try:
+        for _ in range(days_to_predict):
+            pred_input = future_input.reshape((1, 60, 1))
+            pred_price = model.predict(pred_input)
+            future_prices.append(pred_price[0, 0])
+            future_input = np.append(future_input[1:], pred_price, axis=0)
+    except Exception as e:
+        st.error(f"An error occurred during forecasting: {e}")
+        show_restart_button()
+        st.stop()
 
     future_prices = scaler.inverse_transform(np.array(future_prices).reshape(-1, 1))
     future_dates = pd.date_range(start=crypto_df.index[-1] + pd.Timedelta(days=1), periods=days_to_predict)
@@ -135,7 +152,6 @@ if st.sidebar.button("Run Prediction"):
     st.plotly_chart(fig)
     
     # Display predicted prices
-    st.subheader(f"Predicted Closing Prices")
+    st.subheader(f"Predicted Future Prices for {selected_ticker} ({selected_name})")
     st.dataframe(format_table(future_predictions_df))
-
 
