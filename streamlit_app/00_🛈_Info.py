@@ -1,4 +1,13 @@
-# 🪙 **CryptoPredictor**
+import streamlit as st
+from datetime import datetime
+
+st.set_page_config(page_title="Info", page_icon="🪙")
+
+# Generate the current timestamp dynamically
+current_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+st.markdown(
+    """# 🪙 **CryptoPredictor**
 ### **Predicting Cryptocurrency Prices with ML**
 
 **CryptoPredictor is a machine learning-powered app designed to forecast cryptocurrency prices. Built with Python and Streamlit, it utilises historical data to predict trends for popular cryptocurrencies, empowering users with data-driven insights.**
@@ -42,12 +51,12 @@ git clone https://github.com/user/CryptoPredictor.git
 
 2. Create a virtual environment:
 ```bash
-python3 -m venv venvStreamlit
+python3 -m venv venvCrypto
 ```
 
 3. Activate the virtual environment:
 ```bash
-source venvStreamlit/bin/activate
+source venvCrypto/bin/activate
 ```
 
 4. Install requirements:
@@ -67,7 +76,9 @@ streamlit run 00_🛈_Info.py
 
 The app will be live at ```http://localhost:8501```
 
-## 🌟 **Future Enhancements**
+
+
+## 🌟 Future Enhancements
 
 Planned improvements and new features include:
 
@@ -76,7 +87,8 @@ Planned improvements and new features include:
 - **Volatility analysis** to measure price swings and potential risks.
 - **User accounts and history tracking** for tailored predictions and personalised experiences.
 
-## 🔧 **Environment Setup**
+
+## 🔧 Environment Setup
 
 The CryptoPredictor app is built and tested using the following software environment:
 
@@ -85,18 +97,24 @@ The CryptoPredictor app is built and tested using the following software environ
 
 Ensure your environment matches or exceeds these versions for optimal performance.
 
-## 📋 **Important Notes**
 
-- **CoinGecko API Error 429**: If too many requests are made to the URL, the API may block further requests. Please restart or close the app, and try again after a minute or two. The data should then be available.
+## 📋 Important Notes
+
+- **CoinGecko API Error 429**: If too many requests are made to the URL, the API may block further requests. Please restart or close the app, and try again after a minute or two. The data should then be available..
 - **Using the Crypto Predictor**:
     1. Select a cryptocurrency from the dropdown menu.
     2. Choose the desired prediction range using the slider.
     3. Adjust the **Epochs** slider to set the number of training iterations. Note: Higher epochs result in longer training times but can improve model accuracy.
     4. Click the **Run Prediction** button to generate results.
 
-## ⚠️ **Disclaimer**
 
-**This app is designed to demonstrate my skills in data modeling and analytics, showcasing how data-driven insights can assist in building my portfolio as a data analyst. It is not intended to provide financial advice or investment guidance. The predictions are for illustrative purposes only and should not be relied upon for making financial decisions.**
+## ⚠️ Disclaimer
 
+This app is designed to demonstrate my skills in data modeling and analytics, showcasing how data-driven insights can assist in building my portfolio as a data analyst. It is not intended to provide financial advice or investment guidance. The predictions are for illustrative purposes only and should not be relied upon for making financial decisions.
+"""
+)
 
+# Display the timestamp in a Streamlit app
+st.write("### 🔄 Last Updated")
+st.write(f"The app was last updated on: **{current_timestamp}**")
 
