@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import datetime
 
-st.set_page_config(page_title="Info", page_icon="🪙")
+st.set_page_config(page_title="Crypto Predictor", page_icon="🪙")
 
 # Generate the current timestamp dynamically
 current_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")

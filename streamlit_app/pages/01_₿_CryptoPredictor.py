@@ -10,7 +10,7 @@ from keras.layers import Dense, LSTM
 from sklearn.preprocessing import MinMaxScaler
 from helper import fetch_crypto_tickers, download_data, format_table
 
-st.set_page_config(page_title="Crypto Predictor", page_icon="🤑")
+st.set_page_config(page_title="Crypto Price Predictor", page_icon="🤑")
 
 # Function to restart the app
 def restart_app():
