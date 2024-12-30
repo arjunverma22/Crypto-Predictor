@@ -39,7 +39,7 @@ def download_data(ticker):
 def format_table(df):
     """Format the DataFrame for Streamlit display."""
     df = df.loc[:, ~df.columns.duplicated()]  # Remove duplicate columns
-    df.reset_index(inplace=True)
+    df.reset_index(inplace=False)
     df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
     return df.rename(columns={0: "Predicted Closing Price"})
 
