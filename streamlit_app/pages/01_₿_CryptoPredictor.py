@@ -135,12 +135,5 @@ if st.sidebar.button("Run Prediction"):
     st.plotly_chart(fig)
     
     # Display predicted prices
-    st.subheader(f"Predicted Closing Prices")
-    # Format the DataFrame for display
-    formatted_table = format_table(future_predictions_df)
-    
-    # Display the table with interactive features
-    st.dataframe(
-	formatted_table,
-	use_container_width=True,  # Adjust table to container width
-    )
+    st.subheader(f"Predicted Future Prices for {selected_ticker} ({selected_name})")
+    st.dataframe(format_table(future_predictions_df))
