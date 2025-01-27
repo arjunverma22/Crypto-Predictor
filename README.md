@@ -67,7 +67,12 @@ streamlit run 00_🛈_Info.py
 
 The app will be live at ```http://localhost:8501```
 
-## 🌟 **Future Enhancements**
+## 🎬 **Demo**
+  
+### Crypto Predictor Page:
+![Crypto Price Predictor](https://raw.githubusercontent.com/josericodata/CryptoPredictor/main/assets/gifs/crypto.gif)
+
+## 🔮 **Future Enhancements**
 
 Planned improvements and new features include:
 
