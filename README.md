@@ -70,7 +70,7 @@ The app will be live at ```http://localhost:8501```
 ## 🎬 **Demo**
   
 ### Crypto Predictor Page:
-![Crypto Price Predictor](https://raw.githubusercontent.com/josericodata/CryptoPredictor/main/assets/gifs/crypto.gif)
+![Crypto Price Predictor](https://raw.githubusercontent.com/josericodata/CryptoPredictor/main/streamlit_app/assets/gifs/crypto.gif)
 
 ## 🔮 **Future Enhancements**
 
