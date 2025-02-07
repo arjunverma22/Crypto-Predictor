@@ -3,7 +3,7 @@
 
 **CryptoPredictor is a machine learning-powered app designed to forecast cryptocurrency prices. Built with Python and Streamlit, it utilises historical data to predict trends for popular cryptocurrencies, empowering users with data-driven insights.**
 
-## 🛠️ **Project Structure**
+## 🧬 **Project Structure**
 ```bash
 CryptoPredictor  
 ├── streamlit_app/         
