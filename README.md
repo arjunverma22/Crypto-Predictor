@@ -13,10 +13,11 @@ CryptoPredictor
 │   └── gifs/               
 │       └── crypto.gif 
 ├── streamlit_app/
+│   ├── modules/
+│   │   └── helper.py
 │   ├── pages/               
 │   │   └── 01_₿__CryptoPredictor.py 
-│   ├── 00_🛈_Info.py        
-│   └── helper.py 
+│   └── 00_🛈_Info.py        
 ├── LICENSE                 
 ├── README.md               
 └── requirements.txt        
