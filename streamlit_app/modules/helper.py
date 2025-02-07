@@ -5,7 +5,23 @@ import streamlit as st
 # Read cryptocurrency tickers from a CSV file.
 @st.cache_data
 def read_crypto_tickers():
-    return pd.read_csv("assets/dataCleaning/cryptoTickers.csv")
+    try:
+        df = pd.read_csv("assets/dataCleaning/cryptoTickers.csv")
+        
+        # Ensure required columns are present
+        required_columns = {"ticker", "name"}
+        if not required_columns.issubset(df.columns):
+            raise ValueError(f"Missing required columns: {required_columns - set(df.columns)}")
+        
+        # Return as a list of dictionaries for easier Streamlit handling
+        return df.to_dict(orient="records")
+    except FileNotFoundError:
+        st.error("CSV file not found. Please check the file path.")
+        return []
+    except Exception as e:
+        st.error(f"Error reading CSV: {e}")
+        return []
+
 
 # Fetch historical data from Yahoo Finance."""
 def download_data(ticker):
