@@ -1,23 +1,18 @@
-import requests
 import yfinance as yf
 import pandas as pd
 
-def fetch_crypto_tickers(limit=100):
-    """Fetch cryptocurrency tickers with names from CoinGecko."""
+# Path to the CSV file with crypto tickers
+TICKERS_CSV_PATH = "assets/dataCleaning/cryptoTickers.csv"
+
+def read_crypto_tickers():
+    """Read cryptocurrency tickers from a CSV file."""
     try:
-        url = "https://api.coingecko.com/api/v3/coins/markets"
-        params = {
-            "vs_currency": "usd",
-            "order": "market_cap_desc",
-            "per_page": limit,
-            "page": 1
-        }
-        response = requests.get(url, params=params)
-        response.raise_for_status()
-        data = response.json()
-        return [{"ticker": f"{coin['symbol'].upper()}-USD", "name": coin['name']} for coin in data]
+        tickers_df = pd.read_csv(TICKERS_CSV_PATH)
+        if tickers_df.empty or 'ticker' not in tickers_df.columns or 'name' not in tickers_df.columns:
+            raise ValueError("CSV file missing required columns or is empty.")
+        return tickers_df.to_dict(orient="records")
     except Exception as e:
-        raise RuntimeError(f"Failed to fetch cryptocurrency tickers. Please check your internet connection or try again later. Error: {e}")
+        raise RuntimeError(f"Failed to read crypto tickers from CSV. Error: {e}")
 
 def download_data(ticker):
     """Fetch historical data from Yahoo Finance."""
@@ -42,5 +37,4 @@ def format_table(df):
     df.reset_index(inplace=False)
     df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
     return df.rename(columns={0: "Predicted Closing Price"})
-
 

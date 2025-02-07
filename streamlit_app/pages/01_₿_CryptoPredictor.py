@@ -8,29 +8,15 @@ import plotly.graph_objects as go
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
 from sklearn.preprocessing import MinMaxScaler
-from helper import fetch_crypto_tickers, download_data, format_table
+from helper import read_crypto_tickers, download_data, format_table
 
 st.set_page_config(page_title="Crypto Price Predictor", page_icon="🤑")
 
-# Function to restart the app
-def restart_app():
-    """Triggers a Streamlit rerun."""
-    st.session_state["rerun"] = True
-
-if "rerun" in st.session_state and st.session_state["rerun"]:
-    st.session_state["rerun"] = False
-    st.experimental_rerun()
-
-if st.button("Restart App"):
-    restart_app()
-
 # Sidebar inputs
 try:
-    crypto_data = fetch_crypto_tickers()
+    crypto_data = read_crypto_tickers()
 except Exception as e:
     st.error(f"Error fetching cryptocurrency data: {e}")
-    if st.button("Restart App"):
-        restart_app()
     st.stop()
 
 selected_crypto = st.sidebar.selectbox("Select Cryptocurrency", [f"{d['ticker']} ({d['name']})" for d in crypto_data])
@@ -46,8 +32,6 @@ if st.sidebar.button("Run Prediction"):
         crypto_df, close_column = download_data(selected_ticker)
     except Exception as e:
         st.error(f"Error downloading data: {e}")
-        if st.button("Restart App"):
-            restart_app()
         st.stop()
 
     st.subheader(f"Historical Prices for {selected_ticker} ({selected_name})")
@@ -144,3 +128,4 @@ if st.sidebar.button("Run Prediction"):
     # Display predicted prices
     st.subheader(f"Predicted Future Prices for {selected_ticker} ({selected_name})")
     st.dataframe(format_table(future_predictions_df))
+
