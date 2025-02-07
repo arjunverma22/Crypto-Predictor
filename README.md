@@ -6,17 +6,17 @@
 ## 🧬 **Project Structure**
 ```bash
 CryptoPredictor  
-├── streamlit_app/         
-│   ├── assets/
-│   │   ├── dataCleaning/       
-│   │   │   ├── CoinGeckoToCsv.ipynb
-│   │   │   └── cryptoTickers.csv
-│   │   └── gifs/ 
-│   │       └── crypto.gif 
+├── assets/         
+│   ├── dataCleaning/
+│   │   ├── CoinGeckoToCsv.ipynb   
+│   │   └── cryptoTickers.csv
+│   └── gifs/               
+│       └── crypto.gif 
+├── streamlit_app/
 │   ├── pages/               
 │   │   └── 01_₿__CryptoPredictor.py 
 │   ├── 00_🛈_Info.py        
-│   └── helper.py          
+│   └── helper.py 
 ├── LICENSE                 
 ├── README.md               
 └── requirements.txt        
