@@ -15,7 +15,14 @@ st.set_page_config(page_title="Crypto Price Predictor", page_icon="🤑")
 # Function to restart the app
 def restart_app():
     """Triggers a Streamlit rerun."""
+    st.session_state["rerun"] = True
+
+if "rerun" in st.session_state and st.session_state["rerun"]:
+    st.session_state["rerun"] = False
     st.experimental_rerun()
+
+if st.button("Restart App"):
+    restart_app()
 
 # Sidebar inputs
 try:
