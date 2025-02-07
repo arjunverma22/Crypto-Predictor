@@ -18,7 +18,7 @@ CryptoPredictor is built with the following core frameworks and tools:
 
 - **Streamlit** - To create an intuitive web interface.
 - **Yahoo Finance API (YFinance)** - To fetch up-to-date cryptocurrency data.
-- **CoinGecko API** - To dynamically fetch the top 2,500 cryptocurrencies by market capitalization from a pool of 17,061 available tokens, ensuring access to real-time data for popular selections.For an updated list of the 2,500 tickers based on market capitalization, users can run the Jupyter Notebook available at: [CoinGeckoToCsv.ipynb](https://github.com/josericodata/CryptoPredictor/blob/main/assets/dataCleaning/CoinGeckoToCsv.ipynb).
+- **CoinGecko API** - To dynamically fetch the top 2,500 cryptocurrencies by market capitalization from a pool of 17,061 available tokens, ensuring access to real-time data for popular selections.For an updated list of the 2,500 tickers based on market capitalization, users can run the Jupyter Notebook available at: [CoinGeckoToCsv.ipynb](https://github.com/josericodata/CryptoPredictor/blob/main/streamlit_app/assets/dataCleaning/CoinGeckoToCsv.ipynb).
 - **LSTM (Long Short-Term Memory)** - A neural network model optimised for time-series predictions.
 - **Plotly** - To generate dynamic and interactive financial charts.
 - **Pandas** - To manipulate and process cryptocurrency datasets.
