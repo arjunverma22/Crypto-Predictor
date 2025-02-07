@@ -5,7 +5,7 @@ import streamlit as st
 @st.cache_data
 def read_crypto_tickers():
     """Read cryptocurrency tickers from a CSV file."""
-    return pd.read_csv("dataCleaning/cryptoTickers.csv")
+    return pd.read_csv("assets/dataCleaning/cryptoTickers.csv")
 
 def download_data(ticker):
     """Fetch historical data from Yahoo Finance."""
