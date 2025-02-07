@@ -49,27 +49,32 @@ git clone https://github.com/user/CryptoPredictor.git
 ```
 **Hint:** Replace `user` with `josericodata` in the URL above. I am deliberately asking you to pause here so you can support my work. If you appreciate it, please consider giving the repository a star or forking it. Your support means a lot—thank you! 😊
 
-2. Create a virtual environment:
+2. Navigate to the repository directory:
+```bash
+python3 cd CryptoPredictor
+```
+
+3. Create a virtual environment:
 ```bash
 python3 -m venv venvCrypto
 ```
 
-3. Activate the virtual environment:
+4. Activate the virtual environment:
 ```bash
 source venvCrypto/bin/activate
 ```
 
-4. Install requirements:
+5. Install requirements:
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Navigate to the app directory:
+6. Navigate to the app directory:
 ```bash
 cd streamlit_app
 ```
 
-6. Run the app:
+7. Run the app:
 ```bash
 streamlit run 00_🛈_Info.py
 ```
