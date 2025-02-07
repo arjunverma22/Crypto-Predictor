@@ -1,5 +1,6 @@
-import yfinance as yf
 import pandas as pd
+import yfinance as yf
+import streamlit as st
 
 @st.cache_data
 def read_crypto_tickers():
