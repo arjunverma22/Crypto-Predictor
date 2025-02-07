@@ -5,13 +5,7 @@ import streamlit as st
 @st.cache_data
 def read_crypto_tickers():
     """Read cryptocurrency tickers from a CSV file."""
-    try:
-        tickers_df = pd.read_csv("assets/dataCleaning/cryptoTickers.csv")
-        if tickers_df.empty or 'ticker' not in tickers_df.columns or 'name' not in tickers_df.columns:
-            raise ValueError("CSV file missing required columns or is empty.")
-        return tickers_df.to_dict(orient="records")
-    except Exception as e:
-        raise RuntimeError(f"Failed to read crypto tickers from CSV. Error: {e}")
+    return pd.read_csv("../assets/dataCleaning/cryptoTickers.csv")
 
 def download_data(ticker):
     """Fetch historical data from Yahoo Finance."""
