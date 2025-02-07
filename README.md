@@ -3,6 +3,8 @@
 
 **CryptoPredictor is a machine learning-powered app designed to forecast cryptocurrency prices. Built with Python and Streamlit, it utilises historical data to predict trends for popular cryptocurrencies, empowering users with data-driven insights.**
 
+---
+
 ## 🧬 **Project Structure**
 ```bash
 CryptoPredictor  
@@ -23,6 +25,8 @@ CryptoPredictor
 └── requirements.txt        
 ```
 
+---
+
 ## 🛠️ **How It's Built**
 
 CryptoPredictor is built with the following core frameworks and tools:
@@ -34,6 +38,8 @@ CryptoPredictor is built with the following core frameworks and tools:
 - **Plotly** - To generate dynamic and interactive financial charts.
 - **Pandas** - To manipulate and process cryptocurrency datasets.
 
+---
+
 ## 🧑‍💻 **How It Works**
 
 1. The user selects a cryptocurrency (e.g., BTC, ETH).
@@ -42,6 +48,8 @@ CryptoPredictor is built with the following core frameworks and tools:
 4. Predictions are generated for the next 1–90 days.
 5. Results are displayed with interactive charts and tables.
 
+---
+
 ## ✨ **Key Features**
 
 - **Real-time cryptocurrency data** - Access accurate and up-to-date information.
@@ -49,6 +57,8 @@ CryptoPredictor is built with the following core frameworks and tools:
 - **Custom prediction ranges** - Forecast prices for 1 to 90 days.
 - **Downloadable CSV** - Save prediction results for further analysis.
 - **User-friendly interface** - Accessible for novice and experienced users alike.
+
+---
 
 ## 🚀 **Getting Started**
 
@@ -92,10 +102,23 @@ streamlit run 00_🛈_Info.py
 
 The app will be live at ```http://localhost:8501```
 
+---
+
 ## 🎬 **Demo**
   
 ### Crypto Predictor Page:
 ![Crypto Price Predictor](https://raw.githubusercontent.com/josericodata/CryptoPredictor/main/assets/gifs/crypto.gif)
+
+---
+
+### ▶️ Watch the YouTube Tutorial
+
+
+[![Crypto Predictor App in 3 Minutes with Streamlit](https://img.youtube.com/vi/6fTxRzDErbc/maxresdefault.jpg)](https://www.youtube.com/watch?v=MiynYffJWtM "Click to play")
+
+Click the image above or [here](https://www.youtube.com/watch?v=MiynYffJWtM) to watch the video on YouTube.
+
+---
 
 ## 🔮 **Future Enhancements**
 
@@ -106,6 +129,8 @@ Planned improvements and new features include:
 - **Volatility analysis** to measure price swings and potential risks.
 - **User accounts and history tracking** for tailored predictions and personalised experiences.
 
+---
+
 ## 🔧 **Environment Setup**
 
 The CryptoPredictor app is built and tested using the following software environment:
@@ -115,6 +140,8 @@ The CryptoPredictor app is built and tested using the following software environ
 
 Ensure your environment matches or exceeds these versions for optimal performance.
 
+---
+
 ## 📋 **Important Notes**
 
 - **CoinGecko API Error 429**: If too many requests are made to the URL, the API may block further requests. Please restart or close the app, and try again after a minute or two. The data should then be available.
@@ -123,6 +150,8 @@ Ensure your environment matches or exceeds these versions for optimal performanc
     2. Choose the desired prediction range using the slider.
     3. Adjust the **Epochs** slider to set the number of training iterations. Note: Higher epochs result in longer training times but can improve model accuracy.
     4. Click the **Run Prediction** button to generate results.
+
+---
 
 ## ⚠️ **Disclaimer**
 
