@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
 from sklearn.preprocessing import MinMaxScaler
-from helper import read_crypto_tickers, download_data, format_table
+from modules.helper import read_crypto_tickers, download_data, format_table
 
 st.set_page_config(page_title="Crypto Price Predictor", page_icon="🤑")
 
