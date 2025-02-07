@@ -1,13 +1,11 @@
 import yfinance as yf
 import pandas as pd
 
-# Path to the CSV file with crypto tickers
-TICKERS_CSV_PATH = "assets/dataCleaning/cryptoTickers.csv"
-
+@st.cache_data
 def read_crypto_tickers():
     """Read cryptocurrency tickers from a CSV file."""
     try:
-        tickers_df = pd.read_csv(TICKERS_CSV_PATH)
+        tickers_df = pd.read_csv("assets/dataCleaning/cryptoTickers.csv")
         if tickers_df.empty or 'ticker' not in tickers_df.columns or 'name' not in tickers_df.columns:
             raise ValueError("CSV file missing required columns or is empty.")
         return tickers_df.to_dict(orient="records")
