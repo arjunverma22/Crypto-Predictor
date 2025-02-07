@@ -42,7 +42,7 @@ git clone https://github.com/user/CryptoPredictor.git
 
 2. Navigate to the repository directory:
 ```bash
-python3 cd CryptoPredictor
+cd CryptoPredictor
 ```
 
 3. Create a virtual environment:
