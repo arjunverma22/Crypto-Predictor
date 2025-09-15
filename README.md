@@ -111,15 +111,6 @@ The app will be live at ```http://localhost:8501```
 
 ---
 
-### ▶️ Watch the YouTube Tutorial
-
-
-[![Crypto Predictor App in 3 Minutes with Streamlit](https://img.youtube.com/vi/MiynYffJWtM/maxresdefault.jpg)](https://www.youtube.com/watch?v=MiynYffJWtM "Click to play")
-
-Click the image above or [here](https://www.youtube.com/watch?v=MiynYffJWtM) to watch the video on YouTube.
-
----
-
 ## 🔮 **Future Enhancements**
 
 Planned improvements and new features include:
